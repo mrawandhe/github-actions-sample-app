@@ -34,6 +34,11 @@ jobs:
     - name: Build with Maven
       run: mvn -B package --file pom.xml
 
+    - name: Debug secrets presence
+      run: |
+        echo "USERNAME present: ${{ secrets.DOCKERHUB_USERNAME != '' }}"
+        echo "TOKEN present: ${{ secrets.DOCKERHUB_TOKEN != '' }}"
+
     - name: Log in to Docker Hub
       uses: docker/login-action@v3
       with:
