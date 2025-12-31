@@ -33,7 +33,7 @@ public class OrderController {
   /** Checks if application is up and running */
   @GetMapping("/health")
   public ResponseEntity<String> health() {
-    return ResponseEntity.ok("github-actions-sample-app is up and running. App version 1.0.0");
+    return ResponseEntity.ok("github-actions-sample-app is up and running. App version 1.0.0. Testing longer line for checkstyle issue");
   }
 
 }
