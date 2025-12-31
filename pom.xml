@@ -23,6 +23,21 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-test-autoconfigure</artifactId>
+            <version>4.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-webmvc-test</artifactId>
+            <scope>test</scope>
+        </dependency>
 	</dependencies>
 
 	<build>
@@ -39,6 +54,40 @@
 					</annotationProcessorPaths>
 				</configuration>
 			</plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-checkstyle-plugin</artifactId>
+                <version>3.6.0</version>
+                <dependencies>
+                    <!-- Puppycrawl Checkstyle dependency -->
+                    <dependency>
+                        <groupId>com.puppycrawl.tools</groupId>
+                        <artifactId>checkstyle</artifactId>
+                        <version>11.0.0</version>
+                    </dependency>
+                </dependencies>
+                <executions>
+                    <execution>
+                        <id>validate</id>
+                        <phase>validate</phase>
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <!-- Location of your checkstyle rules -->
+                    <configLocation>src/main/resources/checkstyle/checkstyle.xml</configLocation>
+                    <!-- Suppressions file (optional) -->
+                    <suppressionsLocation>src/main/resources/checkstyle/checkstyle-suppressions.xml</suppressionsLocation>
+                    <!-- Print results to console -->
+                    <consoleOutput>true</consoleOutput>
+                    <!-- Fail build on violations -->
+                    <failsOnError>true</failsOnError>
+                    <!-- Generate HTML linkable report -->
+                    <!--<linkXref>false</linkXref>-->
+                </configuration>
+            </plugin>
 		</plugins>
 	</build>
 
